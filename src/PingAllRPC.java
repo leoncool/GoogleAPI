@@ -40,6 +40,7 @@ public class PingAllRPC {
 		rpcList.add("http://rpc.weblogs.com/RPC2");
 		rpcList.add("http://www.blogpeople.net/servlet/weblogUpdates");
 		// rpcList.add("http://ping.myblog.jp");
+		rpcList.add("http://rpc.technorati.com/rpc/ping");
 		// rpcList.add("http://xping.pubsub.com/ping/");
 		rpcList.add("http://services.newsgator.com/ngws/xmlrpcping.aspx");
 		rpcList.add("http://blogsearch.google.lv/ping/RPC2");
@@ -55,10 +56,11 @@ public class PingAllRPC {
 
 		System.out.println("SEO Links File Location: ");
 
-		Scanner scanIn = new Scanner(System.in);
-		String inputName = scanIn.nextLine();
+//		Scanner scanIn = new Scanner(System.in);
+//		String inputName = scanIn.nextLine();
 
-		scanIn.close();
+//		scanIn.close();
+		String inputName="AllUnPingedLinks.txt";
 		System.out.println(inputName);
 
 		File inputFile = new File(inputName);
@@ -72,10 +74,15 @@ public class PingAllRPC {
 				true));
 		String currentLine;
 		int counter = 0;
+		int max=1;
 
 		while ((currentLine = reader.readLine()) != null) {
 			// trim newline when comparing with lineToRemove
 			// System.out.println(currentLine);
+			if(counter>=1)
+			{
+				break;
+			}
 			Scanner scanner = null;
 			try {
 				scanner = new Scanner(tempFile);
@@ -115,14 +122,18 @@ public class PingAllRPC {
 			System.out.println("Going to sleep..."+now.toString());
 			log_writer.write("Going to sleep..."+now.toString());
 			log_writer.flush();
-			Thread.sleep(120000);
+//			Thread.sleep(120000);
 			counter++;
 		}
-
+		Date now=new Date();
+		System.out.println("---------finished----------:" + now.toString()+", counter:"+counter);
+	
+		log_writer.write("---------finished----------:" + now.toString()+", counter:"+counter+"\n");
+		log_writer.flush();
 		writer.close();
 		log_writer.close();
 		reader.close();
-		System.out.println("---------finished----------:" + counter);
+		
 		// if (!inputFile.delete()) {
 		// System.out.println("Could not delete file");
 		// return;
