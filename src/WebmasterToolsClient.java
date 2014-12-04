@@ -417,8 +417,8 @@ public class WebmasterToolsClient {
     SimpleCommandLineParser parser = new SimpleCommandLineParser(args);
 //    String userName = parser.getValue("username", "user", "u");
 //    String userPassword = parser.getValue("password", "pass", "p");
-        String userName = "li.leon.yang@gmail.com";
-    String userPassword = "fryfrybird";
+        String userName = "gmail account";
+    String userPassword = "password";
     boolean help = parser.containsKey("help", "h");
     if (help || (userName == null) || (userPassword == null)) {
       usage();
